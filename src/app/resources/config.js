@@ -52,17 +52,17 @@ const style = {
 
 const effects = {
   mask: {
-    cursor: false,
+    cursor: true,
     x: 50,
     y: 0,
-    radius: 100,
+    radius: 30,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 90,
     x: 50,
-    y: 60,
-    width: 100,
+    y: 50,
+    width: 50,
     height: 50,
     tilt: 0,
     colorStart: "accent-background-strong",

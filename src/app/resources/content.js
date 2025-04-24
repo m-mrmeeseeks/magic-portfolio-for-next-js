@@ -6,11 +6,11 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Doctor of Reproductive Heath",
+  role: "Intern Doctor and Researcher",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
+  email: "guragainnikol@gmail.com",
   location: "Asia/Kathmandu", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Hindi","Nepali"], // optional: Leave the array empty if you don't want to display languages
+  languages: ["English", "Nepali","Hindi"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -18,8 +18,7 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+     Every so often, I write about the things that inspire me—heartfelt encounters in medicine, curious questions from research, and little productivity lessons along the way. I’d love to share them with you.
     </>
   ),
 };
@@ -30,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/m-mrmeeseeks",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/nikolguragain/",
   },
   {
     name: "X",
@@ -55,16 +54,17 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Beyond the White Coat, 
+  More than a Diagnosis</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: <>Recent project: <strong className="ml-4">My portfolio</strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm {person.firstName}, a doctor at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm {person.firstName}, an Intern Doctor at <a href="www.pahs.edu.np">Patan Academy of Health Sciences</a>, where I am learning from patients every day and growing into the physician I hope to become.
+      Beyond the hospital, I find joy in adventure, travel, music, and all things that fuel productivity.
     </>
   ),
 };
@@ -147,12 +147,16 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Patan Academy of Health Sciences",
+        description: <>Undergraduate studies in Medicine.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "S.O.S. Hermann Gmeiner Higher Secondary School",
+        description: <>Higher Secondary with Biology, Physics, Chemistry and Mathematics as Major.</>,
+      },
+      {
+        name: "St. Xavier's Godavari School",
+        description: <>Primary and Lower Secondary with Science, Mathematics and Computer as Major.</>,
       },
     ],
   },
