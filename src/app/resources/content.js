@@ -26,12 +26,7 @@ const newsletter = {
 const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
-  {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/m-mrmeeseeks",
-  },
-  {
+    {
     name: "LinkedIn",
     icon: "linkedin",
     link: "https://www.linkedin.com/in/nikolguragain/",
@@ -54,8 +49,7 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Beyond the White Coat, 
-  More than a Diagnosis</>,
+  headline: <>Beyond the White Coat</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">My portfolio</strong></>,
@@ -90,9 +84,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Nikol is a Nepal-based Doctor with a passion for transforming complex challenges into simple and elegant solutions. 
+        His work spans clinical assesment, performing minor procedures, proper documentation/charting and healing the patients. 
+        He is actively involved in trainings, conferences and seminars; increasing the synapses between his neurons everyday. 
+        Research is one of the pillars of his career: reviewing literatures, sharing uncommon findings, testing hypotheses, performing Clinical audits and Quality improvement strategies. 
       </>
     ),
   },
@@ -101,26 +96,27 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Journal of Nepal Medical Association",
+        timeframe: "2023 - Present",
+        role: "Section Editor",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Started the journey as a <b>Copy-Editor</b> by reviewing submissions, filtering them and following them up throughout the process.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Promoted to the <b>Guest Editor</b> and involved in publication process of the journal and programs conducted by Nepal Medical Association.
           </>,
+          <>
+          Promoted and currently working as the <b>Section Editor</b> and involved in publication process of the journal and programs conducted by Nepal Medical Association.
+        </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
+            src: "/images/projects/project-01/jnma-cover.jpg",
             alt: "Once UI Project",
             width: 16,
-            height: 9,
+            height: 11,
           },
         ],
       },
@@ -162,7 +158,7 @@ const about = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Elective trainings",
     skills: [
       {
         title: "Figma",
@@ -184,15 +180,37 @@ const about = {
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        title: "Kapilvastu Hospital",
+        role: "Senior Clerk",
+        description: <>For 17 weeks, I got chance to involve in direct patient care, daily medical rounds, clinical discussions, diagnosis and treatment.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/project-01/Elective-03.jpeg",
+            alt: "Project image",
+            width: 23,
+            height: 29,
+          },
+        ],
+      },
+      {
+        title: "Ayurveda and Alternative medicine Hospital, Lalitpur",
+        description: <>A 2-week-long elective in Alternative Medicine (Ayurveda), involving in its treatment
+        methods, its beliefs and direct patient interaction throughout the procedures and
+        feedback sessions.</>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/Elective-01.jpeg",
             alt: "Project image",
             width: 16,
-            height: 9,
+            height: 16,
+          },
+          {
+            src: "/images/projects/project-01/Elective-02.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 16,
           },
         ],
       },
