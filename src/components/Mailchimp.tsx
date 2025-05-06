@@ -3,7 +3,7 @@
 import { mailchimp } from "@/app/resources";
 import { Button, Flex, Heading, Input, Text, Background, Column } from "@/once-ui/components";
 import { opacity, SpacingToken } from "@/once-ui/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
   let timeout: ReturnType<typeof setTimeout>;
@@ -52,6 +52,107 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       setError("Please enter a valid email address.");
     }
   };
+
+ 
+
+  // useEffect(()=>{
+  //   const form= document.getElementById("mc-embedded-subscribe-form");
+
+  //    const handleSubmit = async (e: Event) => {
+  //     const target=e.target as HTMLFormElement;
+
+  //     setTimeout(()=> {
+  //       const emailInput = target.querySelector("input[name='EMAIL']") as HTMLInputElement;
+  //       const emailValue = emailInput?.value;
+  
+  //       if (emailValue) {
+  //         const formData = new URLSearchParams();
+  //         formData.append("email", emailValue);
+  
+  //         fetch("https://script.google.com/macros/s/AKfycbyjFeLgRpw-3fHtlnbWk_mQJPLhkALKn4qHoeQmuxaNGVKisqCBAJca0uMMkOdnBII9Kw/exec",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/x-www-form-urlencoded",
+  //           },
+  //           body: new URLSearchParams({ email: email }).toString(), // use your `email` state here
+  //         })
+  //           .then((res) => res.text())
+  //           .then((data) => {
+  //             console.log("Response from Google Script:", data);
+  //             alert("Thank you! Your email has been saved.");
+  //           })
+  //           .catch((err) => {
+  //             console.error("Fetch failed:", err);
+  //             alert("There was an error. Please try again.");
+  //           });
+
+  //         //   method: "POST",
+  //         //   headers: { "Content-Type": "application/x-www-form-urlencoded",
+  //         //    },
+  //         //   body: formData.toString(),
+  //         // })
+  //         //   .then((res) => res.text())
+  //         //   .then((result) => {
+  //         //     console.log(result);
+  //         //     alert("Thank you! Your email has been received.");
+  //         //   })
+  //         //   .catch((error) => {
+  //         //     console.error("Error sending to Google Sheets:", error);
+  //         //   });
+  //       }
+  //     }, 1000);
+  //   };
+  
+  //   form?.addEventListener("submit", handleSubmit);
+  
+  //   return () => {
+  //     form?.removeEventListener("submit", handleSubmit);
+  //   };
+  // }, []);
+
+
+  useEffect(() => {
+    const form = document.getElementById("mc-embedded-subscribe-form");
+  
+    const handleSubmit = async (e: Event) => {
+      e.preventDefault();
+    
+      const target = e.target as HTMLFormElement;
+      const emailInput = target.querySelector("input[name='EMAIL']") as HTMLInputElement;
+      const emailValue = emailInput?.value;
+    
+      if (emailValue) {
+        const formData = new URLSearchParams();
+        formData.append("email", emailValue);
+    
+        try {
+          await fetch("https://script.google.com/macros/s/AKfycbyjFeLgRpw-3fHtlnbWk_mQJPLhkALKn4qHoeQmuxaNGVKisqCBAJca0uMMkOdnBII9Kw/exec", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData.toString(),
+          });
+    
+          alert("Thank you! Your email has been saved.");
+          target.submit(); 
+        } catch (err) {
+          console.error("Google Sheets error:", err);
+          alert("Something went wrong. Please try again.");
+        }
+      }
+    };
+    
+  
+    form?.addEventListener("submit", handleSubmit);
+  
+    return () => {
+      form?.removeEventListener("submit", handleSubmit);
+    };
+  }, []);
+  
+
 
   return (
     <Column
@@ -131,6 +232,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
       >
+
+        
         <Flex id="mc_embed_signup_scroll" fillWidth maxWidth={24} mobileDirection="column" gap="8">
           <Input
             formNoValidate
@@ -175,7 +278,37 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           </div>
           <div className="clear">
             <Flex height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
+              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth
+
+              onClick={async () => {
+                if (!validateEmail(email)) {
+                  alert("Please enter a valid email address.");
+                  return;
+                }
+            
+                try {
+                  const formData = new URLSearchParams();
+                  formData.append("email", email);
+            
+                  const response = await fetch("https://script.google.com/macros/s/AKfycbyjFeLgRpw-3fHtlnbWk_mQJPLhkALKn4qHoeQmuxaNGVKisqCBAJca0uMMkOdnBII9Kw/exec", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: formData.toString(),
+                  });
+            
+                  const result = await response.text();
+                  alert("Thank you! Your email has been saved.");
+                  console.log("Response:", result);
+                  setEmail(""); 
+                } catch (error) {
+                  console.error("Error submitting form:", error);
+                  alert("Submission failed. Try again.");
+                }
+              }}
+
+              >
                 Subscribe
               </Button>
             </Flex>

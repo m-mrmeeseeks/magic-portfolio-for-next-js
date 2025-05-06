@@ -57,7 +57,7 @@ const home = {
   },
   subline: (
     <>
-      I'm {person.firstName}, an Intern Doctor at <a href="www.pahs.edu.np">Patan Academy of Health Sciences</a>, where I am learning from patients every day and growing into the physician I hope to become.
+      I'm {person.firstName}, an Intern Doctor at <a href="https://web.pahs.edu.np/">Patan Academy of Health Sciences</a>, where I am learning from patients every day and growing into the physician I hope to become.
       Beyond the hospital, I find joy in adventure, travel, music, and all things that fuel productivity.
     </>
   ),
